@@ -1,0 +1,6 @@
+.contacts-list > .row > .col > a {
+    color: #000;
+}
+.contacts-list > .row:last-child > .col {
+    border: 0 !important;
+}

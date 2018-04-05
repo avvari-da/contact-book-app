@@ -1,0 +1,12 @@
+.contact-item:after {
+    clear: both;
+}
+.contact-image {
+    float:left;
+    width: 50px;
+    height: 50px;
+}
+.contact-details {
+    margin-left: 60px;
+    width: auto;
+}
