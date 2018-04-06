@@ -42,7 +42,7 @@ class ContactsPage extends React.Component {
     generatePaginationLinks(page, total_pages) {
         let pagination = [];
         pagination.push(
-            <PaginationItem disabled={ page <= 1 }>
+            <PaginationItem key={0} disabled={ page <= 1 }>
                 <PaginationLink previous href="#" onClick={ (e) => { e.preventDefault(); this.handlePaginationClick(page - 1); } } />
             </PaginationItem>
         );
@@ -59,9 +59,9 @@ class ContactsPage extends React.Component {
             }
             pages.reverse();
         }
-        pages.map((p) => {
+        pages.map((p, index) => {
             pagination.push(
-                <PaginationItem active={ page == p }>
+                <PaginationItem key={index + 1} active={ page == p }>
                     <PaginationLink href="#" onClick={ (e) => { e.preventDefault(); (page == p) ? null : this.handlePaginationClick(p); } }>
                         { p }
                     </PaginationLink>
@@ -69,7 +69,7 @@ class ContactsPage extends React.Component {
             );
         });
         pagination.push(
-            <PaginationItem disabled={ page >= total_pages }>
+            <PaginationItem key={pages.count + 1} disabled={ page >= total_pages }>
                 <PaginationLink next href="#" onClick={ (e) => { e.preventDefault(); this.handlePaginationClick(page + 1); } } />
             </PaginationItem>
         );
