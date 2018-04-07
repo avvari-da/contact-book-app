@@ -17,11 +17,20 @@ class ContactPage extends React.Component {
 
         const { user, dispatch, match } = this.props;
         dispatch(contactActions.getById(user.id, match.params.id));
+
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleDelete(id) {
-        const { user, dispatch } = this.props;
-        return (e) => dispatch(contactActions.delete(user.id, id));
+        const {user, dispatch} = this.props;
+        return (e) => {
+            let confirm = window.confirm('Are you sure?');
+            if (confirm) {
+                return dispatch(contactActions.delete(user.id, id));
+            } else {
+                return null;
+            }
+        }
     }
 
     render() {

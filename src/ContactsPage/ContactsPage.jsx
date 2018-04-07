@@ -107,7 +107,7 @@ class ContactsPage extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
-                        : <div className="py-3 text-center text-info">You don't have any contacts</div>
+                        : (!contacts.loading && !contacts.error) ? <div className="py-3 text-center text-info">You don't have any contacts</div> : null
                         }
                     </Container>
                 </div>
