@@ -14,7 +14,7 @@ class ContactsPage extends React.Component {
         super(props);
 
         const { user, dispatch } = this.props;
-        dispatch(contactActions.getAll(user.id));
+        dispatch(contactActions.getAll(user.id, 1));
 
         this.state = {
             search_query: ''

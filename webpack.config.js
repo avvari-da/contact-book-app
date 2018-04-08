@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -27,11 +28,16 @@ module.exports = {
             }
         ]
     },
-    plugins: [new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html',
-        inject: 'body'
-    })],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: 'index.html',
+            inject: 'body'
+        }),
+        new webpack.DefinePlugin({
+            'API_BASE_URL': JSON.stringify(process.env.API_BASE_URL || 'http://localhost:3000/api/v1')
+        })
+    ],
     devServer: {
         historyApiFallback: true
     }
