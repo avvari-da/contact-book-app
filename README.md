@@ -6,4 +6,4 @@ Steps to install
 * Clone the repo to your local folder (lets say, contact-book-app)
 * `cd contact-book-app/`
 * `npm install`
-* `npm dev`
+* `npm run dev`
