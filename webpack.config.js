@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -28,6 +29,7 @@ module.exports = {
             }
         ]
     },
+    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
@@ -39,6 +41,9 @@ module.exports = {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
                 'API_BASE_URL': JSON.stringify(process.env.API_BASE_URL || 'http://localhost:3000')
             }
+        }),
+        new UglifyJSPlugin({
+            sourceMap: true
         })
     ],
     devServer: {
